@@ -73,7 +73,7 @@ app.post('/registeruser', async(req, res)=> { //creates new user
           LastName: req.body.LastName,
           FirstName: req.body.FirstName,
           UserName: req.body.UserName,
-          Passcode: req.body.Passcode
+          Passcode: hash
         });
 
         console.log('user', user);
@@ -113,14 +113,7 @@ app.post('/authorized', async(req, res)=> {
     console.log('User password:', userPasscode);
 
     //comparing the passcodes in this variable
-    //const comparePasscodes = await bcrypt.compare(req.body.Passcode, userPasscode);
-    const comparePasscodes = true; 
-    /* for some reason bcrypt.compare always returns
-    false, so for testing purposes I set this to true
-    Used insomnia to test this route. I would love if 
-    someone 
-     */
-    console.log('compare', comparePasscodes);
+    const comparePasscodes = await bcrypt.compare(req.body.Passcode, userPasscode);
 
     if(comparePasscodes){
       const loadUser = {
