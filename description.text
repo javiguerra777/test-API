@@ -1,0 +1,7 @@
+tasks for this practice API
+add endpoint to create user 
+add database column user_id to car table, this can be done in mySQL (finished)
+modify post route to insert authenticated user user_id
+modify get route to fetch only the cars that the authenticated user inserted
+
+#I want to eventually use SHA256 to hash the passwords, and compare passwords to login
